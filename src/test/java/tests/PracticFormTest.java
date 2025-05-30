@@ -22,7 +22,7 @@ public class PracticFormTest extends TestBase {
             executeJavaScript("$('#fixedban').remove();");
         });
         step("Заполнение формы", () ->{
-            $("#firstName").setValue("Andrei");
+            $("#firstName").setValue("Nikolai");
             $("#lastName").setValue("Inov");
             $("#userEmail").setValue("test@test.ru");
             $("#genterWrapper").$(byText("Male")).click();
@@ -44,7 +44,7 @@ public class PracticFormTest extends TestBase {
         });
         step("Проверка данных", () -> {
             $(".table-responsive").shouldBe(visible);
-            $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Andrei Inov"));
+            $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Nikolai Inov"));
             $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("test@test.ru"));
             $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
             $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("7776665544"));
