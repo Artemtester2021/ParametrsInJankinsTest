@@ -14,12 +14,11 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     public static void setUp() {
-
         Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "eager";
+        Configuration.pageLoadStrategy = "eager";
         Configuration.remote = String.format(
                 "https://%s:%s@%s/wd/hub",
                 System.getProperty("selenoidUserLogin", "user1"),
@@ -32,12 +31,9 @@ public class TestBase {
                 "enableVNC", true,
                 "enableVideo", true
         ));
-
         Configuration.browserCapabilities = capabilities;
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
-
-
 
     @AfterEach
     void addAttachments() {
